@@ -10,6 +10,7 @@
   "author": "Amanda Bausch",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "mongoose": "^4.3.4",
     "path": "^0.12.7"

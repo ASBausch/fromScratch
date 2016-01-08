@@ -11,6 +11,8 @@ var mongoose = require('mongoose');
 //database exist outside of application numerouse apps
 //could connect to this database -- mongolabs to serve
 
+var bodyParser = require('body-parser');
+
 
 //routes
 
@@ -20,7 +22,7 @@ var index= require('./routes/index');
 var cats = require("./routes/cats");
 
 
-
+//app settings
 app.set('port', process.env.PORT || 5000);
 //I want to set the port method, leaving space for a specified port process.env.PORT if it
 // exists use it, if not use 5000
@@ -28,8 +30,12 @@ app.set('port', process.env.PORT || 5000);
 //remember to "start": "node server/app.js" to be able to use npm start in app.js
 //npm install jquery then copy the mn and map file to the vendors it is a node module that you can use
 
-
 //database stuff
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+//default is extended: true
+//turns on body-parser and unwraps the data
 
 var mongoURI = 'mongodb://localhost:27017/eta_cats';
 var MongoDB = mongoose.connect(mongoURI).connection;
